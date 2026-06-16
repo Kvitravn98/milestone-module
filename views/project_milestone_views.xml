@@ -27,6 +27,7 @@
                         type="object"
                         string="Assign Tasks"
                         class="btn-primary"
+                        invisible="not id"
                     />
                 </header>
 
