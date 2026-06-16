@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Team Member List View -->
+    <record id="view_project_team_member_list" model="ir.ui.view">
+        <field name="name">project.team.member.list</field>
+        <field name="model">project.team.member</field>
+        <field name="arch" type="xml">
+            <list string="Team Members">
+                <field name="display_name"/>
+                <field name="project_id"/>
+                <field name="user_id"/>
+                <field name="role"/>
+                <field name="task_count"/>
+                <field name="allocated_hours"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Team Member Form View -->
+    <record id="view_project_team_member_form" model="ir.ui.view">
+        <field name="name">project.team.member.form</field>
+        <field name="model">project.team.member</field>
+        <field name="arch" type="xml">
+            <form string="Team Member">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="user_id"/>
+                            <field name="role"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Allocation">
+                            <field name="task_count" readonly="1"/>
+                            <field name="allocated_hours" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Assigned Tasks">
+                            <field name="task_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="project_id"/>
+                                    <field name="milestone_id"/>
+                                    <field name="estimated_hours"/>
+                                    <field name="stage_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Team Member Search View -->
+    <record id="view_project_team_member_search" model="ir.ui.view">
+        <field name="name">project.team.member.search</field>
+        <field name="model">project.team.member</field>
+        <field name="arch" type="xml">
+            <search string="Search Team Members">
+                <field name="display_name"/>
+                <field name="project_id"/>
+                <field name="user_id"/>
+                <field name="role"/>
+
+                <filter name="active_members"
+                        string="Active"
+                        domain="[('active', '=', True)]"/>
+
+                <filter name="inactive_members"
+                        string="Inactive"
+                        domain="[('active', '=', False)]"/>
+
+                <separator/>
+
+                <filter name="team_lead"
+                        string="Team Lead"
+                        domain="[('role', '=', 'team_lead')]"/>
+
+                <filter name="developer"
+                        string="Developer"
+                        domain="[('role', '=', 'developer')]"/>
+
+                <filter name="tester"
+                        string="Tester"
+                        domain="[('role', '=', 'tester')]"/>
+
+                <filter name="analyst"
+                        string="Analyst"
+                        domain="[('role', '=', 'analyst')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_by_project"
+                            string="Project"
+                            context="{'group_by': 'project_id'}"/>
+                    <filter name="group_by_role"
+                            string="Role"
+                            context="{'group_by': 'role'}"/>
+                    <filter name="group_by_user"
+                            string="User"
+                            context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Team Member Action -->
+    <record id="action_project_team_member" model="ir.actions.act_window">
+        <field name="name">Team Members</field>
+        <field name="res_model">project.team.member</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_project_team_member_search"/>
+        <field name="context">{'search_default_active_members': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first project team member
+            </p>
+            <p>
+                Team members represent users assigned to a project with a specific role.
+            </p>
+        </field>
+    </record>
+    
+
+</odoo>
