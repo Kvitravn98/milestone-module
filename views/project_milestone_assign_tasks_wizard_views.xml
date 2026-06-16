@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_project_milestone_assign_tasks_wizard_form" model="ir.ui.view">
+        <field name="name">project.milestone.assign.tasks.wizard.form</field>
+        <field name="model">project.milestone.assign.tasks.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Assign Tasks">
+                <sheet>
+                    <group>
+                        <field name="milestone_id" readonly="1"/>
+                        <field name="project_id" readonly="1"/>
+                    </group>
+
+                    <group string="Tasks">
+                        <field
+                            name="task_ids"
+                            widget="many2many_tags"
+                            domain="[('project_id', '=', project_id), '|', ('milestone_id', '=', False), ('milestone_id', '=', milestone_id)]"
+                            context="{
+                                'default_project_id': project_id,
+                                'default_milestone_id': milestone_id
+                            }"
+                            options="{'no_quick_create': True}"
+                        />
+                    </group>
+                </sheet>
+
+                <footer>
+                    <button
+                        name="action_assign_tasks"
+                        type="object"
+                        string="Assign Tasks"
+                        class="btn-primary"
+                    />
+
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

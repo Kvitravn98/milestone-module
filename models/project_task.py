@@ -18,6 +18,15 @@ class ProjectTask(models.Model):
         help="Estimated effort required to complete this task, expressed in hours.",
     )
 
+    def action_remove_from_milestone(self):
+        for task in self:
+            task.milestone_id = False
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "reload",
+        }
+
     @api.constrains("estimated_hours")
     def _check_estimated_hours(self):
         for task in self:

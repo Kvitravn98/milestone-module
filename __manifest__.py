@@ -10,6 +10,8 @@
     'data': [
         "security/ir.model.access.csv",
         "views/project_team_member_views.xml",
+        "views/project_milestone_views.xml",
+        "views/project_milestone_assign_tasks_wizard_views.xml",
     ],
     'application': True,
     'installable': True,
