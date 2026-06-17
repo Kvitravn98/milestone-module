@@ -23,15 +23,15 @@
                     </group>
 
                     <field name="milestone_ids"
-                       mode="list,form"
-                       context="{'default_project_id': id}">
-                    <list>
-                        <field name="name"/>
-                        <field name="deadline"/>
-                        <field name="state"/>
-                        <field name="task_count" readonly="1"/>
-                    </list>
-                </field>
+                           mode="list,form"
+                           context="{'default_project_id': id}">
+                        <list>
+                            <field name="name"/>
+                            <field name="deadline"/>
+                            <field name="state"/>
+                            <field name="task_count" readonly="1"/>
+                        </list>
+                    </field>
                 </page>
 
                 <page name="team_allocation" string="Team Allocation">
