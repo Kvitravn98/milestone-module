@@ -11,8 +11,7 @@ class ProjectTask(models.Model):
     )
 
     def action_remove_from_milestone(self):
-        for task in self:
-            task.milestone_id = False
+        self.write({"milestone_id": False})
 
         return {
             "type": "ir.actions.client",
