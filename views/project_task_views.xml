@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_task_form_inherit_estimated_hours" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.estimated.hours</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="estimated_hours"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_task_tree_inherit_estimated_hours" model="ir.ui.view">
+        <field name="name">project.task.list.inherit.estimated.hours</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="estimated_hours" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

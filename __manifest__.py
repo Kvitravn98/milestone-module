@@ -12,6 +12,8 @@
         "views/project_team_member_views.xml",
         "views/project_milestone_views.xml",
         "views/project_milestone_assign_tasks_wizard_views.xml",
+        "views/project_task_views.xml",
+        "views/milestones_module_menus.xml",
     ],
     'application': True,
     'installable': True,

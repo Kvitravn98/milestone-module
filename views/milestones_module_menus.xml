@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_project_team_management"
+        name="Milestones &amp; Team"
+        parent="project.menu_main_pm"
+        sequence="75"
+    />
+
+    <menuitem
+        id="menu_project_milestone_custom"
+        name="Milestones"
+        parent="menu_project_team_management"
+        action="action_project_milestone_custom"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_project_team_member"
+        name="Team Members"
+        parent="menu_project_team_management"
+        action="action_project_team_member"
+        sequence="20"
+    />
+
+</odoo>
