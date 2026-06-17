@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProjectMilestone(models.Model):
@@ -24,6 +24,11 @@ class ProjectMilestone(models.Model):
         copy=False,
     )
 
+    assigned_task_count = fields.Integer(
+        string="Assigned Tasks",
+        compute="_compute_assigned_task_count",
+    )
+
     _sql_constraints = [
         (
             "unique_project_milestone_name",
@@ -31,6 +36,11 @@ class ProjectMilestone(models.Model):
             "A milestone with this name already exists for this project.",
         )
     ]
+
+    @api.depends("task_ids")
+    def _compute_assigned_task_count(self):
+        for milestone in self:
+            milestone.assigned_task_count = len(milestone.task_ids)
 
     def action_open_assign_tasks_wizard(self):
         self.ensure_one()

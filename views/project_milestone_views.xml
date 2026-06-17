@@ -11,6 +11,7 @@
                 <field name="project_id"/>
                 <field name="deadline"/>
                 <field name="state"/>
+                <field name="assigned_task_count"/>
             </list>
         </field>
     </record>

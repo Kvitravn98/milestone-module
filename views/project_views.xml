@@ -29,7 +29,7 @@
                             <field name="name"/>
                             <field name="deadline"/>
                             <field name="state"/>
-                            <field name="task_count" readonly="1"/>
+                            <field name="assigned_task_count" readonly="1"/>
                         </list>
                     </field>
                 </page>
