@@ -15,6 +15,7 @@
         "views/project_task_views.xml",
         "views/project_views.xml",
         "views/milestones_module_menus.xml",
+        "report/project_status_report.xml",
     ],
     'application': True,
     'installable': True,

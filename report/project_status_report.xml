@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_report_project_status" model="ir.actions.report">
+        <field name="name">Project Status Report</field>
+        <field name="model">project.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">milestones_module.report_project_status_document</field>
+        <field name="report_file">milestones_module.report_project_status_document</field>
+        <field name="binding_model_id" ref="project.model_project_project"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Project Status - %s' % (object.name)</field>
+    </record>
+
+    <template id="report_project_status_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="project">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h2>
+                            Project Status Report
+                        </h2>
+
+                        <h3>
+                            <span t-field="project.name"/>
+                        </h3>
+
+                        <div class="row mt-3 mb-3">
+                            <div class="col-6">
+                                <strong>Project Manager:</strong>
+                                <span t-field="project.user_id"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Customer:</strong>
+                                <span t-field="project.partner_id"/>
+                            </div>
+                        </div>
+
+                        <h4>Milestone Summary</h4>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Total Milestones</th>
+                                    <th>Completed Milestones</th>
+                                    <th>Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-field="project.custom_milestone_count"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="project.custom_completed_milestone_count"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="project.custom_milestone_progress"/>
+                                        %
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 class="mt-4">Milestones and Tasks</h4>
+
+                        <t t-if="project.milestone_ids">
+                            <t t-foreach="project.milestone_ids" t-as="milestone">
+
+                                <div class="mt-3">
+                                    <h5>
+                                        <span t-field="milestone.name"/>
+                                    </h5>
+
+                                    <table class="table table-sm table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>Deadline</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="milestone.deadline"/>
+                                                </td>
+                                                <td>
+                                                    <strong>Status</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-out="dict(milestone._fields['state'].selection).get(milestone.state, '')"/>
+                                                </td>
+                                                <td>
+                                                    <strong>Assigned Tasks</strong>
+                                                </td>
+                                                <td>
+                                                    <span t-field="milestone.assigned_task_count"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <t t-if="milestone.task_ids">
+                                        <table class="table table-sm table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Task</th>
+                                                    <th>Assignees</th>
+                                                    <th>Estimated Hours</th>
+                                                    <th>Stage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="milestone.task_ids" t-as="task">
+                                                    <td>
+                                                        <span t-field="task.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-out="', '.join(task.user_ids.mapped('name'))"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="task.estimated_hours"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="task.stage_id"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </t>
+
+                                    <t t-if="not milestone.task_ids">
+                                        <p class="text-muted">
+                                            No tasks assigned to this milestone.
+                                        </p>
+                                    </t>
+                                </div>
+
+                            </t>
+                        </t>
+
+                        <t t-if="not project.milestone_ids">
+                            <p class="text-muted">
+                                No milestones defined for this project.
+                            </p>
+                        </t>
+
+                        <h4 class="mt-4">Team Allocation</h4>
+
+                        <t t-if="project.team_member_ids">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Team Member</th>
+                                        <th>Role</th>
+                                        <th>Assigned Tasks</th>
+                                        <th>Task List</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="project.team_member_ids" t-as="member">
+                                        <td>
+                                            <span t-field="member.user_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-out="dict(member._fields['role'].selection).get(member.role, '')"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="member.task_count"/>
+                                        </td>
+                                        <td>
+                                            <span t-out="', '.join(member.task_ids.mapped('name'))"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+
+                        <t t-if="not project.team_member_ids">
+                            <p class="text-muted">
+                                No team members assigned to this project.
+                            </p>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
