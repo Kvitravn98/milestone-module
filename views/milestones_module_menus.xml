@@ -6,6 +6,7 @@
         name="Milestones &amp; Team"
         parent="project.menu_main_pm"
         sequence="75"
+        groups="project.group_project_user,project.group_project_manager"
     />
 
     <menuitem
@@ -14,6 +15,7 @@
         parent="menu_project_team_management"
         action="action_project_milestone_custom"
         sequence="10"
+        groups="project.group_project_user,project.group_project_manager"
     />
 
     <menuitem
@@ -22,6 +24,7 @@
         parent="menu_project_team_management"
         action="action_project_team_member"
         sequence="20"
+        groups="project.group_project_user,project.group_project_manager"
     />
 
 </odoo>
