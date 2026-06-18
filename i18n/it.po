@@ -1,0 +1,315 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* milestones_module
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-18 19:23+0000\n"
+"PO-Revision-Date: 2026-06-18 19:23+0000\n"
+"Last-Translator: Armando Colone\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n != 0 && n % 1000000 == 0) ? 1 : 2);\n"
+
+#. module: milestones_module
+#: model:ir.model.constraint,message:milestones_module.constraint_project_milestone_unique_project_milestone_name
+msgid "A milestone with this name already exists for this project."
+msgstr "Esiste già una milestone con questo nome per questo progetto."
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__active
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Active"
+msgstr "Attivo"
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_team_member__role__analyst
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Analyst"
+msgstr "Analista"
+
+#. module: milestones_module
+#: model:ir.model,name:milestones_module.model_project_milestone_assign_tasks_wizard
+msgid "Assign Existing Tasks to Milestone"
+msgstr "Assegna task esistenti alla milestone"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_assign_tasks_wizard_form
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_form_custom
+msgid "Assign Tasks"
+msgstr "Assegna task"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone__assigned_task_count
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__task_ids
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_form_custom
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_form
+msgid "Assigned Tasks"
+msgstr "Task assegnati"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__task_count
+msgid "Assigned Tasks Count"
+msgstr "Numero task assegnati"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_assign_tasks_wizard_form
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_project__custom_completed_milestone_count
+msgid "Completed Milestones"
+msgstr "Milestone completate"
+
+#. module: milestones_module
+#: model_terms:ir.actions.act_window,help:milestones_module.action_project_milestone_custom
+msgid "Create your first project milestone"
+msgstr "Crea la tua prima milestone di progetto"
+
+#. module: milestones_module
+#: model_terms:ir.actions.act_window,help:milestones_module.action_project_team_member
+msgid "Create your first project team member"
+msgstr "Crea il tuo primo membro del team di progetto"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__create_uid
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__create_date
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone__deadline
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "Deadline"
+msgstr "Scadenza"
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_team_member__role__developer
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Developer"
+msgstr "Sviluppatore"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__display_name
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_milestone__state__done
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "Done"
+msgstr "Completata"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_task__estimated_hours
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_task_tree_inherit_estimated_hours
+msgid "Estimated Hours"
+msgstr "Ore stimate"
+
+#. module: milestones_module
+#: model:ir.model.fields,help:milestones_module.field_project_task__estimated_hours
+msgid "Estimated effort required to complete this task, expressed in hours."
+msgstr "Stima dell'impegno necessario per completare questo task, espressa in ore."
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Group By"
+msgstr "Raggruppa per"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__id
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__id
+msgid "ID"
+msgstr "ID"
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_milestone__state__in_progress
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "In Progress"
+msgstr "In corso"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Inactive"
+msgstr "Inattivo"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__write_uid
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__write_date
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__milestone_id
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_form_custom
+msgid "Milestone"
+msgstr "Milestone"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_project__custom_milestone_count
+msgid "Milestone Count"
+msgstr "Numero milestone"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_project__custom_milestone_progress
+msgid "Milestone Progress"
+msgstr "Avanzamento milestone"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_form_inherit_milestones_team
+msgid "Milestone Summary"
+msgstr "Riepilogo milestone"
+
+#. module: milestones_module
+#: model:ir.actions.act_window,name:milestones_module.action_project_milestone_custom
+#: model:ir.ui.menu,name:milestones_module.menu_project_milestone_custom
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_form_inherit_milestones_team
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_list_custom
+msgid "Milestones"
+msgstr "Milestone"
+
+#. module: milestones_module
+#: model:ir.ui.menu,name:milestones_module.menu_project_team_management
+msgid "Milestones & Team"
+msgstr "Milestone e team"
+
+#. module: milestones_module
+#: model_terms:ir.actions.act_window,help:milestones_module.action_project_milestone_custom
+msgid ""
+"Milestones help track project progress and organize tasks by delivery "
+"phases."
+msgstr ""
+"Le milestone aiutano a monitorare l'avanzamento del progetto e a organizzare "
+"i task per fasi di rilascio."
+
+#. module: milestones_module
+#: model:ir.model,name:milestones_module.model_project_project
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__project_id
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__project_id
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Project"
+msgstr "Progetto"
+
+#. module: milestones_module
+#: model:ir.model,name:milestones_module.model_project_milestone
+msgid "Project Milestone"
+msgstr "Milestone di progetto"
+
+#. module: milestones_module
+#: model:ir.model,name:milestones_module.model_project_team_member
+msgid "Project Team Member"
+msgstr "Membro del team di progetto"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_form_custom
+msgid "Remove"
+msgstr "Rimuovi"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__role
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Role"
+msgstr "Ruolo"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "Search Milestones"
+msgstr "Cerca milestone"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Search Team Members"
+msgstr "Cerca membri del team"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone__state
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "Status"
+msgstr "Stato"
+
+#. module: milestones_module
+#: model:ir.model,name:milestones_module.model_project_task
+msgid "Task"
+msgstr "Task"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_milestone_assign_tasks_wizard__task_ids
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_assign_tasks_wizard_form
+msgid "Tasks"
+msgstr "Task"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_form_inherit_milestones_team
+msgid "Team Allocation"
+msgstr "Allocazione team"
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_team_member__role__team_lead
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Team Lead"
+msgstr "Team Lead"
+
+#. module: milestones_module
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_form
+msgid "Team Member"
+msgstr "Membro del team"
+
+#. module: milestones_module
+#: model:ir.actions.act_window,name:milestones_module.action_project_team_member
+#: model:ir.model.fields,field_description:milestones_module.field_project_project__team_member_ids
+#: model:ir.ui.menu,name:milestones_module.menu_project_team_member
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_list
+msgid "Team Members"
+msgstr "Membri del team"
+
+#. module: milestones_module
+#: model_terms:ir.actions.act_window,help:milestones_module.action_project_team_member
+msgid ""
+"Team members represent users assigned to a project with a specific role."
+msgstr ""
+"I membri del team rappresentano utenti assegnati a un progetto con un ruolo "
+"specifico."
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_team_member__role__tester
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "Tester"
+msgstr "Tester"
+
+#. module: milestones_module
+#: model:ir.model.constraint,message:milestones_module.constraint_project_team_member_unique_project_user
+msgid "This user is already assigned to this project team."
+msgstr "Questo utente è già assegnato al team di questo progetto."
+
+#. module: milestones_module
+#: model:ir.model.fields.selection,name:milestones_module.selection__project_milestone__state__todo
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_milestone_search_custom
+msgid "To Do"
+msgstr "Da fare"
+
+#. module: milestones_module
+#: model:ir.model.fields,field_description:milestones_module.field_project_team_member__user_id
+#: model_terms:ir.ui.view,arch_db:milestones_module.view_project_team_member_search
+msgid "User"
+msgstr "Utente"
