@@ -27,4 +27,13 @@
         groups="project.group_project_user,project.group_project_manager"
     />
 
+    <menuitem
+        id="menu_project_csv_export"
+        name="Export Project CSV"
+        parent="project.menu_main_pm"
+        action="action_project_csv_export_wizard"
+        sequence="10000"
+        groups="project.group_project_user,project.group_project_manager"
+    />
+
 </odoo>

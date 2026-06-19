@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_team_member_user,project.team.member.project.user,model_project_team_member,project.group_project_user,1,0,0,0
 access_project_team_member_manager,project.team.member.project.manager,model_project_team_member,project.group_project_manager,1,1,1,1
 access_project_milestone_assign_tasks_wizard_user,project.milestone.assign.tasks.wizard.project.user,model_project_milestone_assign_tasks_wizard,project.group_project_user,1,1,1,1
+access_project_csv_export_wizard_user,project.csv.export.wizard.user,model_project_csv_export_wizard,project.group_project_user,1,1,1,1
