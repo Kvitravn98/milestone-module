@@ -15,6 +15,7 @@
         "views/project_task_views.xml",
         "views/project_views.xml",
         "views/project_csv_export_wizard_views.xml",
+        "views/project_csv_import_wizard_views.xml",
         "views/milestones_module_menus.xml",
         "report/project_status_report.xml",
     ],
