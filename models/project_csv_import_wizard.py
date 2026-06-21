@@ -1,11 +1,16 @@
+from dbm import error
+
 from odoo import fields, models
 
 import base64
 import binascii
 import csv
 import io
+import logging
 
 from odoo.exceptions import UserError, ValidationError
+
+_logger = logging.getLogger(__name__)
 
 class ProjectCsvImportWizard(models.TransientModel):
     _name = "project.csv.import.wizard"
@@ -77,11 +82,13 @@ class ProjectCsvImportWizard(models.TransientModel):
         try:
             decoded_file = base64.b64decode(self.csv_file)
         except (binascii.Error, ValueError):
+            _logger.error("The uploaded file could not be decoded.")
             raise UserError("The uploaded file could not be decoded.")
 
         try:
             csv_content = decoded_file.decode("utf-8-sig")
         except UnicodeDecodeError:
+            _logger.error("The uploaded file is not a valid UTF-8 CSV file.")
             raise UserError("The uploaded file must be a valid UTF-8 CSV file.")
 
         reader = csv.DictReader(io.StringIO(csv_content))
@@ -89,6 +96,7 @@ class ProjectCsvImportWizard(models.TransientModel):
         try:
             return list(reader)
         except csv.Error:
+            _logger.error("The uploaded CSV file could not be read.")
             raise UserError("The uploaded CSV file could not be read.")
 
 
@@ -115,6 +123,8 @@ class ProjectCsvImportWizard(models.TransientModel):
         missing_headers = required_headers - fieldnames
 
         if missing_headers:
+            _logger.error("The uploaded CSV file is missing required columns: %s"
+                % ", ".join(sorted(missing_headers)))
             raise UserError(
                 "The uploaded CSV file is missing required columns: %s"
                 % ", ".join(sorted(missing_headers))
@@ -153,14 +163,14 @@ class ProjectCsvImportWizard(models.TransientModel):
 
         if not milestone_name:
             stats["milestones_skipped"] += 1
-            print(f"Milestone import skipped: {milestone_name} empty")
+            _logger.error(f"Milestone import skipped: {milestone_name} empty")
             return
 
         valid_states = ("todo","in_progress","done")
 
         if milestone_state not in valid_states:
             stats["milestones_skipped"] += 1
-            print(f"Milestone import skipped: {milestone_state} not in valid states")
+            _logger.error(f"Milestone import skipped: {milestone_state} not in valid states")
             return
 
         existing_milestone = self.env["project.milestone"].search([
@@ -170,7 +180,7 @@ class ProjectCsvImportWizard(models.TransientModel):
 
         if existing_milestone:
             stats["milestones_skipped"] += 1
-            print(f"Milestone import skipped: {milestone_name} already exists")
+            _logger.error(f"Milestone import skipped: {milestone_name} already exists")
             return
 
         values = {
@@ -184,7 +194,7 @@ class ProjectCsvImportWizard(models.TransientModel):
                 values["deadline"] = fields.Date.to_date(milestone_deadline)
             except (ValueError, TypeError) as error:
                 stats["milestones_skipped"] += 1
-                print(f"Milestone import skipped - date error: {error}")
+                _logger.error(f"Milestone import skipped - date error: {error}")
                 return
 
         try:
@@ -193,7 +203,7 @@ class ProjectCsvImportWizard(models.TransientModel):
             return
         except (UserError, ValidationError) as error:
             stats["milestones_skipped"] += 1
-            print(f"Milestone import skipped: {error}")
+            _logger.error(f"Milestone import skipped: {error}")
             return
 
 
@@ -203,12 +213,14 @@ class ProjectCsvImportWizard(models.TransientModel):
 
         if not team_member_login:
             stats["team_members_skipped"] += 1
+            _logger.error(f"Team member import skipped: login not found.")
             return
 
         valid_roles = {"team_lead","developer","tester","analyst"}
 
         if team_member_role not in valid_roles:
             stats["team_members_skipped"] += 1
+            _logger.error(f"Team member import skipped: invalid role {team_member_role}")
             return
 
         user = self.env["res.users"].search(
@@ -219,6 +231,7 @@ class ProjectCsvImportWizard(models.TransientModel):
 
         if not user:
             stats["team_members_skipped"] += 1
+            _logger.error(f"Team member import skipped: user not found.")
             return
 
         existing_member = self.env["project.team.member"].search([
@@ -228,6 +241,7 @@ class ProjectCsvImportWizard(models.TransientModel):
 
         if existing_member:
             stats["team_members_skipped"] += 1
+            _logger.error(f"Team member import skipped: member already exists.")
             return
         try:
             self.env["project.team.member"].create([{
@@ -240,6 +254,7 @@ class ProjectCsvImportWizard(models.TransientModel):
             return
         except UserError:
             stats["team_members_skipped"] += 1
+            _logger.error(f"Team member import failed: {error}.")
             return
 
     def _get_import_summary_message(self, stats):
